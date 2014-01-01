@@ -8,7 +8,16 @@ Install OpenVZ on CentOS 6.x
 
     source <(curl -s https://raw.github.com/redpandoraweb/CentOS-6-Quick-Install-Scripts/master/installOpenVZ.sh --insecure)
 
+Create OpenVZ Container ID = 251 on CentOS 6.x
+-----
 
+    source <(curl -s https://raw.github.com/redpandoraweb/CentOS-6-Quick-Install-Scripts/master/OpenVZ_Create251.sh --insecure)
+
+Create OpenVZ Container ID = 252 on CentOS 6.x
+-----
+
+    source <(curl -s https://raw.github.com/redpandoraweb/CentOS-6-Quick-Install-Scripts/master/OpenVZ_Create252.sh --insecure)
+    
 Create OpenVZ Container ID = 253 on CentOS 6.x
 -----
 
