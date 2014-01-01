@@ -27,9 +27,9 @@ vzctl start 253
 # skip, go to below part
 
 # Configure the OpenVZ Container
-/usr/sbin/vzctl enter 253
+# /usr/sbin/vzctl enter 253
 
-cat > /etc/sysconfig/network-scripts/ifcfg-eth0 << EOF
+vzctl exec 253 cat > /etc/sysconfig/network-scripts/ifcfg-eth0 << EOF
 DEVICE=eth0
 HOSTNAME="server253"
 BOOTPROTO=static
@@ -42,14 +42,14 @@ DNS2=8.8.4.4
 EOF
 
 # we are using static IP, stop NetworkManager, start network
-chkconfig NetworkManager off
-service NetworkManager stop
-chkconfig network on
-service network restart
+vzctl exec 253 chkconfig NetworkManager off
+vzctl exec 253 service NetworkManager stop
+vzctl exec 253 chkconfig network on
+vzctl exec 253 service network restart
 #system-config-network
 
-/sbin/ifconfig eth0 0
-/sbin/service network restart
+vzctl exec 253 /sbin/ifconfig eth0 0
+vzctl exec 253 /sbin/service network restart
 
 
 # set password root for OpenVZ container 253
@@ -74,6 +74,6 @@ done
 
 # Change password
 # echo -e "$password1\n$password1" | passwd $username
-echo -e "$password1\n$password1" | passwd root
+vzctl exec 253 echo -e "$password1\n$password1" | passwd root
 
-exit
+echo "OpenVZ Container 253 is created"
