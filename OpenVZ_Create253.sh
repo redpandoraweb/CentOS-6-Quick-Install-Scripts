@@ -25,7 +25,7 @@ vzctl start 253
 # Configure the OpenVZ Container
 cat > /vz/root/253/etc/sysconfig/network-scripts/ifcfg-eth0 << EOF
 DEVICE=eth0
-HOSTNAME="server251"
+HOSTNAME="server253"
 BOOTPROTO=static
 IPADDR=192.168.1.253
 NETMASK=255.255.255.0
@@ -68,9 +68,10 @@ done
 
 a_user="root"
 its_password=$password1
+
 # Change password
-# echo -e "$password1\n$password1" | passwd $username
+echo -e "$password1\n$password1" | passwd $username
 vzctl exec 253 echo "$a_user:$its_password" | chpasswd
-#vzctl exec 253 echo -e "$password1\n$password1" | passwd root
+
 
 echo "OpenVZ Container 253 is created"
