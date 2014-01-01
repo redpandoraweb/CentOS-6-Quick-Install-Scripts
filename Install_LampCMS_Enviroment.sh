@@ -130,6 +130,7 @@ sed -i 's/Allow from 127.0.0.1/Allow from all/g' /etc/httpd/conf.d/phpmyadmin.co
 sed -i "s/\['blowfish_secret'\] = ''/\['blowfish_secret'\] = 'blowfish'/g" /usr/share/phpmyadmin/config.inc.php
 
 service httpd restart
+service php-fpm restart
 
 echo 'Now install VsFTP'
 yum -y install vsftpd ftp
