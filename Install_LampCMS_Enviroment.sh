@@ -125,19 +125,14 @@ service httpd restart
 echo 'Now install VsFTP'
 yum -y install vsftpd ftp
 
-Open up the configuration file:
-nano /etc/vsftpd/vsftpd.conf
+sed -i 's/anonymous_enable=YES/anonymous_enable=NO/g' /etc/vsftpd/vsftpd.conf
+sed -i 's/\#local_enable=YES/local_enable=YES/g' /etc/vsftpd/vsftpd.conf
+sed -i 's/\#chroot_local_user=YES/chroot_local_user=YES/g' /etc/vsftpd/vsftpd.conf
 
-One primary change you need to make is to change the Anonymous_enable to No:
-anonymous_enable=NO
-Prior to this change, vsftpd allowed anonymous, unidentified users to access the VPS's files. This is useful if you are seeking to distribute information widely, but may be considered a serious security issue in most other cases. 
-
-After that, uncomment the local_enable option, changing it to yes.
-local_enable=YES
-Finish up by uncommenting command to chroot_local_user. When this line is set to Yes, all the local users will be jailed within their chroot and will be denied access to any other part of the server.
-chroot_local_user=YES
-Finish up by restarting vsftpd:
 sudo service vsftpd restart
-In order to ensure that vsftpd runs at boot, run chkconfig:
 chkconfig vsftpd on
+
+echo 'Install php module need by LampCMS'
+yum -y install php-mbstring php-curl php-gd php-pecl-oauth php-pdo php-pdo_mysql php
+
 
