@@ -23,6 +23,15 @@ Create OpenVZ Container ID = 253 on CentOS 6.x
 
     source <(curl -s https://raw.github.com/redpandoraweb/CentOS-6-Quick-Install-Scripts/master/OpenVZ_Create253.sh --insecure)
     
+    
+Quick setup LampCMS enviroment
+-----
+
+    source <(curl -s https://raw.github.com/redpandoraweb/CentOS-6-Quick-Install-Scripts/master/Install_LampCMS_Enviroment.sh --insecure)
+    
+    
+    
+    
 Install OpenVZ on CentOS 6.x
 -----
 
