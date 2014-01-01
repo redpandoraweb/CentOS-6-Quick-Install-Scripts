@@ -1,4 +1,8 @@
 #!/bin/bash
+
+# Reference from https://openvz.org/Quick_Installation_CentOS_6
+
+# Create a VENET Container
 vzctl create 251 --ostemplate centos-6-x86_64 --config basic
 
 vzctl set 251 --vmguarpages 512M --save
@@ -10,6 +14,7 @@ vzctl set 251 --save --name server251
 vzctl set 251 --save --onboot yes
 vzctl set 251 --save --hostname server251.example.com
 vzctl set 251 --save --searchdomain example.com
+vzctl set 251 --save --netif_add eth0,,,FE:FF:FF:FF:FF:FF
 vzctl set 251 --save --nameserver 8.8.8.8 --nameserver 8.8.4.4
 
 # add ifcfg-veth251.0 
