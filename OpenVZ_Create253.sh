@@ -13,11 +13,10 @@ vzctl set 253 --save --searchdomain example.com
 vzctl set 253 --save --nameserver 8.8.8.8 --nameserver 8.8.4.4
 
 # add ifcfg-veth253.0 
-cat > /etc/sysconfig/network-scripts/ifcfg-veth252.0 << EOF
-DEVICE=veth253.0
-ONBOOT=no
-BRIDGE=vmbr0
-EOF
+echo "DEVICE=veth253.0" > /etc/sysconfig/network-scripts/ifcfg-veth252.0
+echo "ONBOOT=no" >> /etc/sysconfig/network-scripts/ifcfg-veth252.0
+echo "BRIDGE=vmbr0" >> /etc/sysconfig/network-scripts/ifcfg-veth252.0
+
 
 vzctl start 253
 /usr/sbin/brctl addif vmbr0 veth253.0
@@ -29,17 +28,16 @@ vzctl start 253
 # Configure the OpenVZ Container
 # /usr/sbin/vzctl enter 253
 
-vzctl exec 253 cat > /etc/sysconfig/network-scripts/ifcfg-eth0 << EOF
-DEVICE=eth0
-HOSTNAME="server253"
-BOOTPROTO=static
-IPADDR=192.168.1.253
-NETMASK=255.255.255.0
-ONBOOT=yes
-GATEWAY=192.168.1.1
-DNS1=8.8.8.8
-DNS2=8.8.4.4
-EOF
+vzctl exec 253 echo "DEVICE=eth0" > /etc/sysconfig/network-scripts/ifcfg-eth0
+vzctl exec 253 echo "HOSTNAME=\"server253\"" >> /etc/sysconfig/network-scripts/ifcfg-eth0
+vzctl exec 253 echo "BOOTPROTO=static" >> /etc/sysconfig/network-scripts/ifcfg-eth0
+vzctl exec 253 echo "IPADDR=192.168.1.253" >> /etc/sysconfig/network-scripts/ifcfg-eth0
+vzctl exec 253 echo "NETMASK=255.255.255.0" >> /etc/sysconfig/network-scripts/ifcfg-eth0
+vzctl exec 253 echo "ONBOOT=yes" >> /etc/sysconfig/network-scripts/ifcfg-eth0
+vzctl exec 253 echo "GATEWAY=192.168.1.1" >> /etc/sysconfig/network-scripts/ifcfg-eth0
+vzctl exec 253 echo "DNS1=8.8.8.8" >> /etc/sysconfig/network-scripts/ifcfg-eth0
+vzctl exec 253 echo "DNS2=8.8.4.4" >> /etc/sysconfig/network-scripts/ifcfg-eth0
+
 
 # we are using static IP, stop NetworkManager, start network
 vzctl exec 253 chkconfig NetworkManager off
