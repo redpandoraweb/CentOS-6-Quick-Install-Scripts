@@ -28,14 +28,14 @@ sudo rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
 echo Install yum-priorities
 yum -y install yum-priorities
 
-echo change /etc/yum.repos.d/epel.repo... and add the line priority=10 to the [epel] section:
+echo change /etc/yum.repos.d/epel.repo... and add the line priority=10 to the [epel] section
 sed -i '/enabled=1/a\priority=10' /etc/yum.repos.d/epel.repo
 
-echo do the same for the [remi] section in /etc/yum.repos.d/remi.repo, plus change enabled to 1:
-sed '/\[remi\]/,/enabled=0/ { s/enabled=0/enabled=1/ }' /etc/yum.repos.d/remi.repo
+echo do the same for the [remi] section in /etc/yum.repos.d/remi.repo, plus change enabled to 1
+sed -i '/\[remi\]/,/enabled=0/ { s/enabled=0/enabled=1/ }' /etc/yum.repos.d/remi.repo
 
 echo Instal php-fpm and mod_fastcgi
-yum install php-fpm mod_fastcgi
+yum -y install php-fpm mod_fastcgi
 
 echo Configure Apache to use mod_fastcgi
 sed -i 's/FastCgiWrapper On/FastCgiWrapper Off/g' /etc/httpd/conf.d/fastcgi.conf
