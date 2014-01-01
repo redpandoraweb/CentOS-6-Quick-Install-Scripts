@@ -65,6 +65,14 @@ yum install -y mongo-10gen mongo-10gen-server
 
 service mongod start
 chkconfig mongod on
+
+echo 'Install MongoRock'
+wget http://rockmongo.com/release/rockmongo-1.1.5.zip
+unzip rockmongo-1.1.5.zip
+cp rockmongo /var/www/html
+echo 'visit the index.php in your browser, for example: http://localhost/rockmongo/index.php;'
+echo 'Login with admin username and password, which is set "admin" and "admin" as default'
+
 clear
 echo 'MongoDB is installed, running and set to auto-start on reboots.... your still a NoSQL groupie...'
 
@@ -135,4 +143,8 @@ chkconfig vsftpd on
 echo 'Install php module need by LampCMS'
 yum -y install php-mbstring php-curl php-gd php-pecl-oauth php-pdo php-pdo_mysql php
 
+cat > /var/www/html/info.php << EOF
+<?php phpinfo();  ?>
+EOF
 
+echo 'Install complete'
