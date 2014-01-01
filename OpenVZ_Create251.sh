@@ -58,11 +58,6 @@ echo "Please repeat the new password:"
 read -s password2
 
 # Check both passwords match
-if [ $password1 != $password2 ]; then
-    echo "Passwords do not match"
-     exit    
-fi
-
 while [ $password1 != $password2 ]
 do
   echo "Please enter the new password:"
