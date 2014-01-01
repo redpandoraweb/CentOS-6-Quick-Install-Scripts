@@ -3,10 +3,10 @@ CentOS6 Quick Installer Bash scripts:
 
 To install any of the following, just copy and paste the text in the box on a fresh copy of CentOS6.x (x86_64)
 
-Install OpenVZ on CentOS 6.x
+Quick setup OpenVZ on CentOS 6.x
 -----
 
-    source <(curl -s https://raw.github.com/redpandoraweb/CentOS-6-Quick-Install-Scripts/master/installOpenVZ.sh --insecure)
+    source <(curl -s https://raw.github.com/redpandoraweb/CentOS-6-Quick-Install-Scripts/master/OpenVZ_QuickSetup.sh --insecure)
 
 Create OpenVZ Container ID = 251 on CentOS 6.x
 -----
@@ -22,6 +22,11 @@ Create OpenVZ Container ID = 253 on CentOS 6.x
 -----
 
     source <(curl -s https://raw.github.com/redpandoraweb/CentOS-6-Quick-Install-Scripts/master/OpenVZ_Create253.sh --insecure)
+    
+Install OpenVZ on CentOS 6.x
+-----
+
+    source <(curl -s https://raw.github.com/redpandoraweb/CentOS-6-Quick-Install-Scripts/master/installOpenVZ.sh --insecure)
     
 Install NTP on CentOS 6.x
 -----
