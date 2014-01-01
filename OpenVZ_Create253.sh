@@ -2,6 +2,7 @@
 
 # Reference from https://openvz.org/Quick_Installation_CentOS_6
 
+# Create a VENET Container
 vzctl create 253 --ostemplate centos-6-x86_64 --config basic
 
 vzctl set 253 --vmguarpages 512M --save
