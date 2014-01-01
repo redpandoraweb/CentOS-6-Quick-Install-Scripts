@@ -10,6 +10,7 @@ vzctl set 253 --save --name server253
 vzctl set 253 --save --onboot yes
 vzctl set 253 --save --hostname server253.example.com
 vzctl set 253 --save --searchdomain example.com
+vzctl set 253 --save --netif_add eth0,,,FE:FF:FF:FF:FF:FF
 vzctl set 253 --save --nameserver 8.8.8.8 --nameserver 8.8.4.4
 
 # add ifcfg-veth253.0 
