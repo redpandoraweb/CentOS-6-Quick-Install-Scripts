@@ -13,31 +13,27 @@ vzctl set 253 --save --searchdomain example.com
 vzctl set 253 --save --nameserver 8.8.8.8 --nameserver 8.8.4.4
 
 # add ifcfg-veth253.0 
-echo "DEVICE=veth253.0" > /etc/sysconfig/network-scripts/ifcfg-veth252.0
-echo "ONBOOT=no" >> /etc/sysconfig/network-scripts/ifcfg-veth252.0
-echo "BRIDGE=vmbr0" >> /etc/sysconfig/network-scripts/ifcfg-veth252.0
-
+cat > /etc/sysconfig/network-scripts/ifcfg-veth253.0 << EOF
+DEVICE=veth253.0
+ONBOOT=no
+BRIDGE=vmbr0
+EOF
 
 vzctl start 253
 /usr/sbin/brctl addif vmbr0 veth253.0
 
-# Set passwd
-# vzctl exec 253 passwd
-# skip, go to below part
-
 # Configure the OpenVZ Container
-# /usr/sbin/vzctl enter 253
-
-vzctl exec 253 echo "DEVICE=eth0" > /etc/sysconfig/network-scripts/ifcfg-eth0
-vzctl exec 253 echo "HOSTNAME=\"server253\"" >> /etc/sysconfig/network-scripts/ifcfg-eth0
-vzctl exec 253 echo "BOOTPROTO=static" >> /etc/sysconfig/network-scripts/ifcfg-eth0
-vzctl exec 253 echo "IPADDR=192.168.1.253" >> /etc/sysconfig/network-scripts/ifcfg-eth0
-vzctl exec 253 echo "NETMASK=255.255.255.0" >> /etc/sysconfig/network-scripts/ifcfg-eth0
-vzctl exec 253 echo "ONBOOT=yes" >> /etc/sysconfig/network-scripts/ifcfg-eth0
-vzctl exec 253 echo "GATEWAY=192.168.1.1" >> /etc/sysconfig/network-scripts/ifcfg-eth0
-vzctl exec 253 echo "DNS1=8.8.8.8" >> /etc/sysconfig/network-scripts/ifcfg-eth0
-vzctl exec 253 echo "DNS2=8.8.4.4" >> /etc/sysconfig/network-scripts/ifcfg-eth0
-
+cat > /vz/root/253/etc/sysconfig/network-scripts/ifcfg-eth0 << EOF
+DEVICE=eth0
+HOSTNAME="server251"
+BOOTPROTO=static
+IPADDR=192.168.1.253
+NETMASK=255.255.255.0
+ONBOOT=yes
+GATEWAY=192.168.1.1
+DNS1=8.8.8.8
+DNS2=8.8.4.4
+EOF
 
 # we are using static IP, stop NetworkManager, start network
 vzctl exec 253 chkconfig NetworkManager off
@@ -70,8 +66,11 @@ do
   read -s password2
 done
 
+a_user="root"
+its_password=$password1
 # Change password
 # echo -e "$password1\n$password1" | passwd $username
-vzctl exec 253 echo -e "$password1\n$password1" | passwd root
+vzctl exec 253 echo "$a_user:$its_password" | chpasswd
+#vzctl exec 253 echo -e "$password1\n$password1" | passwd root
 
 echo "OpenVZ Container 253 is created"
