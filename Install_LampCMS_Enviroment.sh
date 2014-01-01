@@ -79,14 +79,15 @@ echo 'MongoDB is installed, running and set to auto-start on reboots.... your st
 echo 'Now install MongoDB php driver'
 yum -y install php-devel php-pear
 yum -y install git
+yum -y install gcc
 cd ~
 git clone https://github.com/mongodb/mongo-php-driver
 cd mongo-php-driver
 phpize
 ./configure
 make
-sudo make install
-echo If all went well, the mongo.so should be installed in /usr/lib64/php/modules/
+make install
+echo 'If all went well, the mongo.so should be installed in /usr/lib64/php/modules/'
 cd /etc/php.d
 echo "extension=mongo.so" >> mongo.ini
 service httpd restart
@@ -126,7 +127,7 @@ yum -y install phpmyadmin
 sed -i 's/Allow from 127.0.0.1/Allow from all/g' /etc/httpd/conf.d/phpmyadmin.conf
 
 # fill some blowfish secret word here:
-sed -i 's/blowfish_secret\'\] = \'\'/blowfish_secret\'\] = \'blowfish\'/g' /usr/share/phpmyadmin/config.inc.php
+sed -i "s/\['blowfish_secret'\] = ''/\['blowfish_secret'\] = 'blowfish'/g" /usr/share/phpmyadmin/config.inc.php
 
 service httpd restart
 
