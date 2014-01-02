@@ -143,7 +143,7 @@ sudo service vsftpd restart
 chkconfig vsftpd on
 
 echo 'Install php module need by LampCMS'
-yum -y install php-mbstring php-curl php-gd php-pecl-oauth php-pdo php-pdo_mysql php
+yum -y install php-mbstring php-curl php-gd php-pecl-oauth php-pdo php-pdo_mysql php php-tidy
 
 cat > /var/www/html/info.php << EOF
 <?php phpinfo();  ?>
