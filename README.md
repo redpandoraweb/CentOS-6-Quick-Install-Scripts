@@ -29,8 +29,12 @@ Quick setup LampCMS enviroment
 
     source <(curl -s https://raw.github.com/redpandoraweb/CentOS-6-Quick-Install-Scripts/master/Install_LampCMS_Enviroment.sh --insecure)
     
+Quick setup VNC Server
+-----
+
+    source <(curl -s https://raw.github.com/redpandoraweb/CentOS-6-Quick-Install-Scripts/master/Install_Xfce_VNC_CentOS_6.sh --insecure)    
     
-    
+
     
 Install OpenVZ on CentOS 6.x
 -----
