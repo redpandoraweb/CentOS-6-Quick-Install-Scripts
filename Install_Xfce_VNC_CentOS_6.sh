@@ -1,7 +1,5 @@
 echo 'Install xfce4 + TigerVNC-Server + Firefox + Flash on Centos 6.2'
 
-echo 'Enter root mode'
-su
 echo 'Install EPEL & RPMI & YUM-Priorities'
 rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
 rpm -ivh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
