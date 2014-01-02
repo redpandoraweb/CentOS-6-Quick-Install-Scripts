@@ -1,8 +1,6 @@
 #!/bin/bash
 
 # Reference from https://openvz.org/Quick_Installation_CentOS_6
-
-su
 # Create a VENET Container
 vzctl create 253 --ostemplate centos-6-x86_64 --config basic
 
