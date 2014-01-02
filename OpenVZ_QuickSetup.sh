@@ -2,7 +2,6 @@
 # The node's IP is 192.168.1.99/24 and the gateway is 192.168.1.1. The containers will have 192.168.1.101, 192.168.1.102, etc...
 # Add the OpenVZ yum repo
 
-su
 wget -O /etc/yum.repos.d/openvz.repo http://download.openvz.org/openvz.repo
 rpm --import http://download.openvz.org/RPM-GPG-Key-OpenVZ
 
