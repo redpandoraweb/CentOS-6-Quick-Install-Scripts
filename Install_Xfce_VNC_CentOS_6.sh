@@ -4,7 +4,7 @@ echo 'Install EPEL & RPMI & YUM-Priorities'
 rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
 rpm -ivh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
 yum -y install yum-priorities nano
-yum update
+yum -y update
  
 echo 'Enable epel and remi repo'
 sed -i '/enabled=1/a\priority=10' /etc/yum.repos.d/epel.repo
