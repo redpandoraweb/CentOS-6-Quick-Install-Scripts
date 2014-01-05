@@ -67,6 +67,9 @@ chkconfig NetworkManager off
 chkconfig network on
 service network restart
 
+# we are not use NetworkManager, manually DNS used
+echo 'nameserver 8.8.8.8' >> /etc/resolv.conf
+echo 'nameserver 8.8.4.4' >> /etc/resolv.conf
 
 # Create /etc/vz/vznet.conf with the following content. This will automatically add/remove the container's interface to the bridge when you start/stop the container.
 cat > /etc/vz/vznet.conf << EOF
