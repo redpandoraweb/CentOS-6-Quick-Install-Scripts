@@ -48,7 +48,8 @@ mkdir /usr/lib/cgi-bin/
 chown -R apache:apache /var/run/mod_fastcgi
 
 # disable mod_php
-sed -i 's/LoadModule php5_module/\#LoadModule php5_module/g;s/AddHandler/\#AddHandler/g;s/AddType/\#AddType/g;' /etc/httpd/conf.d/php.conf
+#sed -i 's/LoadModule php5_module/\#LoadModule php5_module/g;s/AddHandler/\#AddHandler/g;s/AddType/\#AddType/g;' /etc/httpd/conf.d/php.conf
+mv /etc/httpd/conf.d/php.conf /etc/httpd/conf.d/php.conf.bk
 
 # Restart Apache
 /etc/init.d/httpd restart
