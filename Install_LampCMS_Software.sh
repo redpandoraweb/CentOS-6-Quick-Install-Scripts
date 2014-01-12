@@ -1,6 +1,5 @@
 echo 'This will install LampCMS software from Web'
 
-su
 cd /var/www/html/
 wget http://www.lampcms.com/lampcms.zip
 unzip lampcms.zip
